@@ -1,0 +1,16 @@
+{% macro general_meta() %}
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% if page and page.description -%}
+<meta name="description" content="{{ page.description }}" />
+{% elif page and page.summary -%}
+<meta name="description" content="{{ page.summary | striptags | truncate(length=160) }}" />
+{% elif section and section.description -%}
+<meta name="description" content="{{ section.description }}" />
+{% else -%}
+<meta name="description" content="{{ config.description }}" />
+{% endif -%}
+{% if config.extra.keywords %}<meta name="keywords" content="{{ config.extra.keywords }}" />{% endif %}
+<link rel="canonical" href="{{ current_url | safe }}" />
+{% endmacro general_meta %}

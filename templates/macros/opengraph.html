@@ -1,0 +1,40 @@
+{# OpenGraph and Twitter Card meta tags #}
+
+{% macro og_preview() %}
+<title>{{ social::og_title() }} | {{ config.title }}</title>
+<meta property="og:site_name" content="{{ config.title }}"/>
+<meta property="og:title" content="{{ social::og_title() }} | {{ config.title }}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="{{ current_url | safe }}"/>
+<meta property="og:description" content="{{ social::og_description() }}"/>
+{{ hooks::og_image_tags() }}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="{{ social::og_title() }}"/>
+<meta name="twitter:description" content="{{ social::og_description() }}"/>
+{% endmacro og_preview %}
+
+{% macro og_description() %}
+{%- if section and section.description -%}
+{{ section.description }}
+{%- elif page and page.summary -%}
+{{ page.summary | striptags | truncate(length=200) }}
+{%- elif page and page.description -%}
+{{ page.description }}
+{%- else -%}
+{{ config.description }}
+{%- endif -%}
+{% endmacro og_description %}
+
+{% macro og_title() %}
+{%- if section and section.title -%}
+{{ section.title | striptags }}
+{%- elif page and page.title -%}
+{{ page.title | striptags }}
+{%- elif term and term.name -%}
+{{ term.name | striptags }}
+{%- elif taxonomy and taxonomy.name -%}
+{{ taxonomy.name | striptags }}
+{%- else -%}
+{{ config.title }}
+{%- endif -%}
+{% endmacro og_title %}

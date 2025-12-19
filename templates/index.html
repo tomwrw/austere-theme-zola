@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if config.extra.profile_picture %}
+<img src="{{ config.extra.profile_picture }}" alt="Profile picture" class="profile-pic">
+{% endif %}
+<article>{{ section.content | safe }}</article>
+
+{% endblock content %}

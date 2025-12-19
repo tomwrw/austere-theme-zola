@@ -1,0 +1,69 @@
+title = "austere"
+description = "A minimal theme for Zola with a focus on writing."
+
+base_url = "https://www.tomwrw.co.uk"
+
+# No SASS - CSS is inline
+compile_sass = false
+
+# Search index enabled
+build_search_index = true
+default_language = "en"
+
+# Feeds
+generate_feeds = true
+feed_filenames = ["atom.xml", "rss.xml"]
+
+# Taxonomies
+taxonomies = [{ name = "tags", feed = true }]
+
+[search]
+index_format = "fuse_javascript"
+
+[markdown]
+highlight_code = true
+highlight_theme = "css"
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+[extra]
+# Keywords for SEO
+keywords = "zola, theme, minimal"
+
+site_icon = "quill.svg"
+
+# Header strapline (optional - omit to hide)
+strapline = "A minimal theme for Zola"
+
+# Favicon (optional)
+favicon = "/favicon.ico"
+
+# Profile picture on home page (optional - omit to hide)
+profile_picture = "/images/profile.svg"
+
+# Enable inline SVG icons (uses sprite sheet)
+inline_icons = true
+icon_path = "static/icons/"
+icons = ["light", "asleep", "rss"]
+
+# Responsive images
+image_format = "auto"
+image_quality = 80
+images_default_size = 1024
+images_sizes = [512, 1024, 2048]
+
+# Footer text (optional - omit to hide)
+footer_text = "austere - made for <a href='https://getzola.org'>Zola</a>"
+
+# Navigation menu
+menu_links = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts/", name = "Posts" },
+  { url = "$BASE_URL/about/", name = "About" },
+  { url = "$BASE_URL/projects/", name = "Projects" },
+  { url = "$BASE_URL/tags/", name = "Tags" },
+  { url = "$BASE_URL/search/", name = "Search" },
+]

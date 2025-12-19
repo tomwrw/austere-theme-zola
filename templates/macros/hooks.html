@@ -1,0 +1,13 @@
+{# Page hooks - empty macros for users to override #}
+
+{% macro post_above_content(page) %}{% endmacro post_above_content %}
+{% macro post_below_content(page) %}{% endmacro post_below_content %}
+{% macro post_below_tags(page) %}{% endmacro post_below_tags %}
+{% macro posts_below_title(page) %}{% endmacro posts_below_title %}
+
+{# OpenGraph image hook #}
+{% macro og_image_tags() %}
+{%- if page.extra.og_preview_img -%}
+<meta property="og:image" content="{{ get_url(path=page.extra.og_preview_img) | safe }}"/>
+{%- endif -%}
+{% endmacro og_image_tags %}
