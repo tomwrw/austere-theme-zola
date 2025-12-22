@@ -26,7 +26,7 @@
 1. Download this theme to your `themes` directory:
    ```bash
    cd your-zola-site
-   git clone https://github.com/tomwrw/austere-theme-zola themes/austere
+   git submodule add https://github.com/tomwrw/austere-theme-zola themes/austere
    ```
 
 2. Set the theme in your `config.toml`:
