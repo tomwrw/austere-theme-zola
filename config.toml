@@ -67,3 +67,21 @@ menu_links = [
   { url = "$BASE_URL/tags/", name = "Tags" },
   { url = "$BASE_URL/search/", name = "Search" },
 ]
+
+[extra.colours.light]
+background = "#FAF7F2"
+text = "#1a1a1a"
+text_muted = "#3a3a3a"
+accent = "#9E4440"
+accent_hover = "#7A3533"
+code_bg = "#f0ebe3"
+border = "#e0d9ce"
+
+[extra.colours.dark]
+background = "#141413"
+text = "#e8e8e8"
+text_muted = "#a0a0a0"
+accent = "#E07A5F"
+accent_hover = "#F4A594"
+code_bg = "#1e1e1d"
+border = "#2a2a29"

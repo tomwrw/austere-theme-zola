@@ -56,20 +56,23 @@ nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-bottom:1.5rem}nav a{font
     {% set light_text = config.extra.colours.light.text | default(value="#1a1a1a") %}
     {% set light_text_muted = config.extra.colours.light.text_muted | default(value="#3a3a3a") %}
     {% set light_accent = config.extra.colours.light.accent | default(value="#B85450") %}
+    {% set light_accent_hover = config.extra.colours.light.accent_hover | default(value="#7A3533") %}
     {% set light_code_bg = config.extra.colours.light.code_bg | default(value="#f0ebe3") %}
     {% set light_border = config.extra.colours.light.border | default(value="#e0d9ce") %}
     {% set dark_bg = config.extra.colours.dark.background | default(value="#141413") %}
     {% set dark_text = config.extra.colours.dark.text | default(value="#e8e8e8") %}
     {% set dark_text_muted = config.extra.colours.dark.text_muted | default(value="#a0a0a0") %}
     {% set dark_accent = config.extra.colours.dark.accent | default(value="#E07A5F") %}
+    {% set dark_accent_hover = config.extra.colours.dark.accent_hover | default(value="#F4A594") %}
     {% set dark_code_bg = config.extra.colours.dark.code_bg | default(value="#1e1e1d") %}
     {% set dark_border = config.extra.colours.dark.border | default(value="#2a2a29") %}
     <style>
     /* Light theme */
-    html.light{background:{{light_bg}};--tc:{{light_bg}};--accent:{{light_accent}};color:{{light_text}}}
-    html.light a{color:var(--accent);text-decoration:none}
+    html.light{background:{{light_bg}};--tc:{{light_bg}};--accent:{{light_accent}};--accent-hover:{{light_accent_hover}};color:{{light_text}}}
+    html.light a{color:var(--accent);text-decoration:underline}
     html.light a:visited{color:var(--accent)}
-    html.light a:hover{text-decoration:underline}
+    html.light a:hover{color:var(--accent-hover)}
+    html.light header>div>a{text-decoration:none}html.light header>div>a:hover{text-decoration:underline}
     html.light p,html.light ul,html.light ol,html.light .desc{color:{{light_text_muted}}}
     html.light h1,html.light h2,html.light h3,html.light h4,html.light h5,html.light h6{color:{{light_text}}}
     html.light strong{color:{{light_text}}}html.light header strong{color:var(--accent)}
@@ -80,10 +83,11 @@ nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-bottom:1.5rem}nav a{font
     /* Light syntax highlighting */
     html.light .z-comment{color:#6a737d;font-style:italic}html.light .z-keyword{color:#d73a49}html.light .z-string{color:#22863a}html.light .z-number{color:#005cc5}html.light .z-function{color:#6f42c1}html.light .z-type{color:#005cc5}html.light .z-constant{color:#005cc5}html.light .z-variable{color:#e36209}html.light .z-attribute{color:#6f42c1}html.light .z-tag{color:#22863a}html.light .z-operator{color:#d73a49}html.light .z-punctuation{color:#24292e}html.light .z-builtin{color:#6f42c1}html.light .z-label{color:#005cc5}html.light .z-namespace{color:#e36209}
     /* Dark theme */
-    html.dark{background:{{dark_bg}};--tc:{{dark_bg}};--accent:{{dark_accent}};color:{{dark_text}}}
-    html.dark a{color:var(--accent);text-decoration:none}
+    html.dark{background:{{dark_bg}};--tc:{{dark_bg}};--accent:{{dark_accent}};--accent-hover:{{dark_accent_hover}};color:{{dark_text}}}
+    html.dark a{color:var(--accent);text-decoration:underline}
     html.dark a:visited{color:var(--accent)}
-    html.dark a:hover{text-decoration:underline}
+    html.dark a:hover{color:var(--accent-hover)}
+    html.dark header>div>a{text-decoration:none}html.dark header>div>a:hover{text-decoration:underline}
     html.dark p,html.dark ul,html.dark ol,html.dark .desc{color:{{dark_text_muted}}}
     html.dark h1,html.dark h2,html.dark h3,html.dark h4,html.dark h5,html.dark h6{color:#fff}
     html.dark strong{color:#fff}html.dark header strong{color:var(--accent)}
@@ -97,7 +101,6 @@ nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-bottom:1.5rem}nav a{font
     /* Shared styles */
     a.active{color:var(--accent)}
     a:focus-visible{outline:2px solid currentColor;outline-offset:2px;border-radius:2px}
-    .tags a{text-decoration:none}.tags a:hover{text-decoration:underline}
     hr{border:0;border-top:1px solid;clear:both;margin:1.5rem 0}
     blockquote{border-left:3px solid var(--accent);padding-left:1.25rem;font-style:italic}
     .skip-link{position:absolute;top:-100%;left:0;padding:.5rem 1rem;background:var(--accent);color:#fff;z-index:1000}.skip-link:focus{top:0}
