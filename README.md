@@ -34,7 +34,7 @@
    theme = "austere"
    ```
 
-3. Copy the example content to get started:
+3. Copy the example content to get started (optional):
    ```bash
    cp -r themes/austere/content/* content/
    ```
@@ -104,7 +104,8 @@ Customize the color scheme for light and dark modes:
 background = "#FAF7F2"
 text = "#1a1a1a"
 text_muted = "#3a3a3a"
-accent = "#B85450"
+accent = "#9E4440"
+accent_hover = "#7A3533"
 code_bg = "#f0ebe3"
 border = "#e0d9ce"
 
@@ -113,6 +114,7 @@ background = "#141413"
 text = "#e8e8e8"
 text_muted = "#a0a0a0"
 accent = "#E07A5F"
+accent_hover = "#F4A594"
 code_bg = "#1e1e1d"
 border = "#2a2a29"
 ```
