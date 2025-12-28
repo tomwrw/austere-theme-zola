@@ -8,18 +8,19 @@
 
 ---
 
+The austere theme is designed with readability in mind. It uses the core functionality of Zola, and doesn't require additional third-party integrations. Currently, the only external link is to Google Fonts. Styles are internal to the base template, and colour can be applied directly in the site configuration.
+
+The design and simplicity of austere was heavily influenced by the excellent [Zap](https://github.com/jimmyff/zola-zap) theme by [jimmyff](https://github.com/jimmyff).
+
 ## Features
 
-- **Lightweight** - ~2KB inline CSS, no external stylesheets
-- **Dark/Light mode** - Toggle with system preference detection
-- **Customizable colours** - Configure all theme colours in `config.toml`
-- **Responsive images** - Automatic resizing and srcset generation
-- **Search** - Client-side search powered by Fuse.js
-- **Feeds** - Atom and RSS feed generation
-- **SEO** - OpenGraph and Twitter Card meta tags
-- **Accessibility** - Skip links, semantic HTML, focus states
-- **Projects page** - Showcase your work with a dedicated projects section
-- **Analytics** - Optional Umami or Google Analytics support
+- Internal CSS (~2KB) - no external stylesheets
+- Configurable color themes for light/dark
+- Serif typography
+- Light/dark mode toggle
+- Responsive images
+- Atom and RSS feeds
+- Fuse.js search
 
 ## Installation
 
@@ -41,21 +42,107 @@
 
 ## Configuration
 
-### Required Settings
+### Example Configuration
+
+Here you can find an example config.toml to use for your site with the austere theme. Make sure you change:
+
+- Title
+- Description
+- Base URL
+
 
 ```toml
-base_url = "https://yoursite.com"
-
-# Required for search
+# Site title.
+title = "austere"
+# Site description.
+description = "A minimal theme for Zola with a focus on writing."
+# Base URL for your site.
+base_url = "https://www.tomwrw.co.uk"
+# No SASS - CSS is internal (located in base.html template).
+compile_sass = false
+# Search index enabled.
 build_search_index = true
+# Default site language.
+default_language = "en"
+# Feeds.
+generate_feeds = true
+# Specify feed filenames.
+feed_filenames = ["atom.xml", "rss.xml"]
+# Taxonomies.
+taxonomies = [{ name = "tags", feed = true }]
 
 [search]
+# Required for search page to work.
 index_format = "fuse_javascript"
 
-# Required for syntax highlighting
 [markdown]
+# Required for code highlighting blocks.
 highlight_code = true
 highlight_theme = "css"
+
+[slugify]
+# Controls slugification for page/section URLs.
+paths = "on"
+# Controls slugification for taxonomy terms (tags, categories, etc.).
+taxonomies = "on"
+# Controls slugification for heading anchors (H1 to H6 etc.).
+anchors = "on"
+
+[extra]
+# Keywords for SEO.
+keywords = "zola, theme, minimal"
+# Site icon in header (optional - comment out to hide).
+site_icon = "quill.svg"
+# Header strapline (optional - comment out to hide).
+strapline = "A minimal theme for Zola"
+# Footer text (optional - comment out to hide).
+footer_text = "austere - made for <a href='https://getzola.org'>Zola</a>"
+# Favicon (optional - comment out to hide).
+favicon = "/favicon.ico"
+# Profile picture on home page (optional - comment out to hide).
+profile_picture = "/images/profile.svg"
+
+# Enable inline SVG icons (uses sprite sheet).
+inline_icons = true
+icon_path = "static/icons/"
+icons = ["light", "asleep", "rss"]
+
+# Responsive images
+image_format = "auto"
+image_quality = 80
+images_default_size = 1024
+images_sizes = [512, 1024, 2048]
+
+# Navigation menu.
+menu_links = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts/", name = "Posts" },
+  { url = "$BASE_URL/about/", name = "About" },
+  { url = "$BASE_URL/projects/", name = "Projects" },
+  { url = "$BASE_URL/tags/", name = "Tags" },
+  { url = "$BASE_URL/search/", name = "Search" },
+]
+
+# Custom colour themes. Adjust here to apply own colour.
+# Light colours.
+[extra.colours.light]
+background = "#FAF7F2"
+text = "#1a1a1a"
+text_muted = "#3a3a3a"
+accent = "#9E4440"
+accent_hover = "#7A3533"
+code_bg = "#f0ebe3"
+border = "#e0d9ce"
+# Dark colours.
+[extra.colours.dark]
+background = "#141413"
+text = "#e8e8e8"
+text_muted = "#a0a0a0"
+accent = "#E07A5F"
+accent_hover = "#F4A594"
+code_bg = "#1e1e1d"
+border = "#2a2a29"
+
 ```
 
 ### Theme Options
