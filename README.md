@@ -22,6 +22,12 @@ The design and simplicity of austere was heavily influenced by the excellent [Za
 - Atom and RSS feeds
 - Fuse.js search
 
+## Screenshot
+
+<p align="center">
+  <img src="screenshot.png" alt="austere" width="1000">
+</p>
+
 ## Installation
 
 1. Download this theme to your `themes` directory:
