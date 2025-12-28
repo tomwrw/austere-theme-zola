@@ -8,6 +8,8 @@
 
 ---
 
+**Live Demo:** [My personal website](https://tomwrw.com)
+
 The austere theme is designed with readability in mind. It uses the core functionality of Zola, and doesn't require additional third-party integrations. Currently, the only external link is to Google Fonts. Styles are internal to the base template, and colour can be applied directly in the site configuration.
 
 The design and simplicity of austere was heavily influenced by the excellent [Zap](https://github.com/jimmyff/zola-zap) theme by [jimmyff](https://github.com/jimmyff).
