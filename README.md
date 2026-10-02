@@ -83,10 +83,12 @@ taxonomies = [{ name = "tags", feed = true }]
 # Required for search page to work.
 index_format = "fuse_javascript"
 
-[markdown]
-# Required for code highlighting blocks.
-highlight_code = true
-highlight_theme = "css"
+[markdown.highlighting]
+# Code block colours for light and dark mode.
+light_theme = "github-light"
+dark_theme = "github-dark"
+# Required so code blocks follow the theme toggle rather than the OS setting.
+add_color_scheme = false
 
 [slugify]
 # Controls slugification for page/section URLs.
@@ -312,49 +314,57 @@ template = "search.html"
 +++
 ```
 
-## Shortcodes
+## Components
+
+Zola 0.23 replaced shortcodes with components.
 
 ### Responsive Image
 
 ```markdown
-{{ image(src="photo.jpg", alt="Description") }}
+{{ <image src="photo.jpg" alt="Description"/> }}
+```
+
+### Original Image
+
+```markdown
+{{ <image_original src="photo.jpg" alt="Description"/> }}
 ```
 
 ### YouTube Embed
 
 ```markdown
-{{ youtube(id="dQw4w9WgXcQ") }}
-{{ youtube(id="dQw4w9WgXcQ", autoplay=true) }}
+{{ <youtube id="dQw4w9WgXcQ"/> }}
+{{ <youtube id="dQw4w9WgXcQ" autoplay={true}/> }}
 ```
 
 ### Spotify Embed
 
 ```markdown
-{{ spotify(id="album-id") }}
+{{ <spotify id="album-id"/> }}
 ```
 
 ## Customization
 
 ### Template Hooks
 
-Override these macros in your own `templates/macros/hooks.html`:
+Copy `templates/components/hooks.html` from the theme into your own `templates/components/hooks.html` and fill in the components you need. Keep every component in the file, including `og_image_tags`, as your copy replaces the theme's file.
 
 ```html
-{% macro post_above_content(page) %}
+{% component post_above_content(page) %}
 <!-- Content before post body -->
-{% endmacro %}
+{% endcomponent post_above_content %}
 
-{% macro post_below_content(page) %}
+{% component post_below_content(page) %}
 <!-- Content after post body -->
-{% endmacro %}
+{% endcomponent post_below_content %}
 
-{% macro post_below_tags(page) %}
+{% component post_below_tags(page) %}
 <!-- Content after post tags -->
-{% endmacro %}
+{% endcomponent post_below_tags %}
 
-{% macro posts_below_title(page) %}
+{% component posts_below_title(page) %}
 <!-- Content after post title in list view -->
-{% endmacro %}
+{% endcomponent posts_below_title %}
 ```
 
 ### OpenGraph Images
@@ -370,7 +380,7 @@ og_preview_img = "preview.jpg"
 
 ## Requirements
 
-- Zola 0.17.0 or later
+- Zola 0.23.0 or later
 
 ## License
 

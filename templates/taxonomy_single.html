@@ -9,7 +9,7 @@
   <li>
     <time datetime="{{ post.date }}">{{ post.date | date(format='%d %b') }}</time>
     <a href="{{ post.permalink | safe }}">{{ post.title }}</a>{% if post.draft %} <span class="s">(Draft)</span>{% endif %}
-    {{ hooks::posts_below_title(page=post) }}
+    {{ <posts_below_title page={post}/> }}
   </li>
   {% endfor %}
 </ul>

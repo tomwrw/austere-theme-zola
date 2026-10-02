@@ -21,10 +21,12 @@ taxonomies = [{ name = "tags", feed = true }]
 # Required for search page to work.
 index_format = "fuse_javascript"
 
-[markdown]
-# Required for code highlighting blocks.
-highlight_code = true
-highlight_theme = "css"
+[markdown.highlighting]
+# Code block colours for light and dark mode.
+light_theme = "github-light"
+dark_theme = "github-dark"
+# Required so code blocks follow the theme toggle rather than the OS setting.
+add_color_scheme = false
 
 [slugify]
 # Controls slugification for page/section URLs.

@@ -3,7 +3,7 @@ description = "A minimal theme for Zola with a focus on writing."
 tags = ["dark", "blog", "minimal", "personal", "responsive", "seo", "writing"]
 license = "MIT"
 homepage = "https://github.com/tomwrw/austere-theme-zola"
-min_version = "0.17.0"
+min_version = "0.23.0"
 demo = ""
 
 [author]

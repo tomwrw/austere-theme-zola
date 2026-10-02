@@ -1,0 +1,26 @@
+{# Image components for responsive image handling #}
+{# Usage in content: {{ <image src="photo.jpg" alt="Description"/> }} #}
+
+{% component image(src, alt, path = none, class = "", @config, @page = none) -%}
+{% if path -%}
+{% set abspath = path ~ src -%}
+{% else -%}
+{% set abspath = page.colocated_path ~ src -%}
+{% endif -%}
+{% set meta = get_image_metadata(path=abspath) -%}
+{% set_global srcset = "" -%}
+{% for s in config.extra.images_sizes -%}
+{% if meta.width >= s -%}
+{% set resized = resize_image(format=config.extra.image_format, path=abspath, width=s, op="fit_width", quality=config.extra.image_quality) -%}
+{% if srcset %}{% set_global srcset = srcset ~ ", " %}{% endif -%}
+{% set_global srcset = srcset ~ resized.url ~ " " ~ s ~ "w" -%}
+{% endif -%}
+{% endfor -%}
+{% set default_resized = resize_image(format=config.extra.image_format, path=abspath, width=config.extra.images_default_size, op="fit_width", quality=config.extra.image_quality) -%}
+<img alt="{{ alt }}" title="{{ alt }}" src="{{ default_resized.url | safe }}" srcset="{{ srcset | safe }}" class="{{ class }}" />
+{%- endcomponent image %}
+
+{# Original image without resizing: {{ <image_original src="photo.jpg" alt="Description"/> }} #}
+{% component image_original(src, alt, class = "", @page = none) -%}
+<img alt="{{ alt }}" title="{{ alt }}" src="{{ get_url(path=page.path ~ src) | safe }}" class="{{ class }}" />
+{%- endcomponent image_original %}

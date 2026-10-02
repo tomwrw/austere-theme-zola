@@ -1,19 +1,19 @@
 {# OpenGraph and Twitter Card meta tags #}
 
-{% macro og_preview() %}
-<title>{{ social::og_title() }} | {{ config.title }}</title>
+{% component og_preview(@config, @current_url = none, @page = none, @section = none, @term = none, @taxonomy = none) %}
+<title>{{ <og_title/> }} | {{ config.title }}</title>
 <meta property="og:site_name" content="{{ config.title }}"/>
-<meta property="og:title" content="{{ social::og_title() }} | {{ config.title }}"/>
+<meta property="og:title" content="{{ <og_title/> }} | {{ config.title }}"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="{{ current_url | safe }}"/>
-<meta property="og:description" content="{{ social::og_description() }}"/>
-{{ hooks::og_image_tags() }}
+<meta property="og:description" content="{{ <og_description/> }}"/>
+{{ <og_image_tags/> }}
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="{{ social::og_title() }}"/>
-<meta name="twitter:description" content="{{ social::og_description() }}"/>
-{% endmacro og_preview %}
+<meta name="twitter:title" content="{{ <og_title/> }}"/>
+<meta name="twitter:description" content="{{ <og_description/> }}"/>
+{% endcomponent og_preview %}
 
-{% macro og_description() %}
+{% component og_description(@config, @page = none, @section = none) %}
 {%- if section and section.description -%}
 {{ section.description }}
 {%- elif page and page.summary -%}
@@ -23,9 +23,9 @@
 {%- else -%}
 {{ config.description }}
 {%- endif -%}
-{% endmacro og_description %}
+{% endcomponent og_description %}
 
-{% macro og_title() %}
+{% component og_title(@config, @page = none, @section = none, @term = none, @taxonomy = none) %}
 {%- if section and section.title -%}
 {{ section.title | striptags }}
 {%- elif page and page.title -%}
@@ -37,4 +37,4 @@
 {%- else -%}
 {{ config.title }}
 {%- endif -%}
-{% endmacro og_title %}
+{% endcomponent og_title %}

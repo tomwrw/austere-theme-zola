@@ -1,4 +1,4 @@
-{% macro general_meta() %}
+{% component general_meta(@config, @current_url = none, @page = none, @section = none) %}
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,4 +13,4 @@
 {% endif -%}
 {% if config.extra.keywords %}<meta name="keywords" content="{{ config.extra.keywords }}" />{% endif %}
 <link rel="canonical" href="{{ current_url | safe }}" />
-{% endmacro general_meta %}
+{% endcomponent general_meta %}
